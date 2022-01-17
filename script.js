@@ -1,28 +1,31 @@
+
 function compute()
 {
-    var principal = document.getElementById("principal").value;
-    var rate = document.getElementById("rate").value;
-    var years = document.getElementById("years").value;
-
-    if (principal == "") { //Here Check is empty
-        alert("Amount can't by empty or alphabet character");
-        document.getElementById("principal").focus();
-        return false;
-    }else{
-        if (principal <= 0) { //Here check is a positive number
-            alert("Enter a positive number");
-            document.getElementById("principal").focus();
-            return false;
-        }
+    if(principal.value < 1){
+        alert("Amount has to be a positive quantity")
+        principal.focus()
+        return
     }
-    var HDB = new Date().getFullYear(); //get the year
-    var future= parseInt(HDB,10) + parseInt(years,10);
-    var interest= principal * years * rate / 100;
-    var result= "If you deposit <mark>" + principal + "</mark>,<br> at an interest rate of <mark>" + rate + "</mark> % <br> You will receive an amount of <mark>" + interest + ",</mark><br> in the year <mark>" + future + "</mark>";
-    document.getElementById("result").innerHTML=result;
+    let interest = principal.value * years.value * rate.value / 100;
+    yearInFuture = new Date().getFullYear() + parseInt(years.value);
+    result = document.getElementById("result")
+    result.innerHTML = "<p>If you deposit <mark>"+ principal.value +"</mark>,<br>an interest rate of <mark>" + rate.value + "%</mark>.<br>You will receive an amount of <mark>"+interest+"</mark>,<br>in the year <mark>"+yearInFuture+"</mark></p>";
+
 }
 
-function showVal(newVal){ //Show range value in span
-    document.getElementById("showRate").innerHTML= newVal + '%';
+function refreshSlider(){
+rate.value
+document.getElementById("rateLabel").innerText = rate.value + "%"}
+
+finishPage = () =>{
+    var rate = document.getElementById("rate");
+    var principal = document.getElementById("principal");
+    var years = document.getElementById("years");
+    years = document.getElementById("years");
+    for(i=1; i<=10; i++){
+    	let element = document.createElement("option")
+    	element.innerText = i
+    	element.setAttribute("value", i)
+    	years.appendChild(element)
+    }
 }
-        
